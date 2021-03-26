@@ -1,4 +1,5 @@
 ﻿using api.Data;
+using api.DTO;
 using api.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,15 +22,19 @@ namespace api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<AppUsers>> Register(string username, string password)
+        public async Task<ActionResult<AppUsers>> Register(RegisterDto registerDto)
         {
+            if (await _context.Users.AnyAsync(x => x.Username == registerDto.Username.ToLower()))
+                return BadRequest("Username is aldready taken");
+
             using var hmac = new HMACSHA512();
 
             var user = new AppUsers
             {
-                Username = username,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)),
-                PasswordSalt = hmac.Key
+                Username = registerDto.Username.ToLower(),
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+                PasswordSalt = hmac.Key,
+                isAuthor = registerDto.IsAuthor
             };
 
             _context.Users.Add(user);
