@@ -42,5 +42,24 @@ namespace api.Controllers
 
             return user;
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<AppUsers>> Login(LoginDto loginDto)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == loginDto.Username);
+
+            if (user == null)
+                return Unauthorized("Invalid Username");
+
+            var hmac = new HMACSHA512(user.PasswordSalt);
+            var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            for (int i = 0; i < computeHash.Length; i++)
+            {
+                if (computeHash[i] != user.PasswordHash[i])
+                    return Unauthorized("Invalid Password");
+            }
+
+            return user;
+        }
     }
 }
