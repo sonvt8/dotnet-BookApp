@@ -25,7 +25,7 @@ namespace api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<AppUsers>> Register(RegisterDto registerDto)
+        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if (await _context.Users.AnyAsync(x => x.UserName == registerDto.Username.ToLower()))
                 return BadRequest("Username is aldready taken");
@@ -42,7 +42,11 @@ namespace api.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return user;
+            return new UserDto
+            {
+                Username = user.UserName,
+                Token = _tokenService.CreateToken(user)
+            };
         }
 
         [HttpPost("login")]
