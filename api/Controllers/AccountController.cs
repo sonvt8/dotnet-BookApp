@@ -27,17 +27,16 @@ namespace api.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<AppUsers>> Register(RegisterDto registerDto)
         {
-            if (await _context.Users.AnyAsync(x => x.Username == registerDto.Username.ToLower()))
+            if (await _context.Users.AnyAsync(x => x.UserName == registerDto.Username.ToLower()))
                 return BadRequest("Username is aldready taken");
 
             using var hmac = new HMACSHA512();
 
             var user = new AppUsers
             {
-                Username = registerDto.Username.ToLower(),
+                UserName = registerDto.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key,
-                isAuthor = registerDto.IsAuthor
+                PasswordSalt = hmac.Key
             };
 
             _context.Users.Add(user);
@@ -49,7 +48,7 @@ namespace api.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == loginDto.Username);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
 
             if (user == null)
                 return Unauthorized("Invalid Username");
@@ -64,7 +63,7 @@ namespace api.Controllers
 
             return new UserDto
             {
-                Username = user.Username,
+                Username = user.UserName,
                 Token = _tokenService.CreateToken(user)
             };
         }

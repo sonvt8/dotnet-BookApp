@@ -32,11 +32,8 @@ namespace api.Data.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isAuthor")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

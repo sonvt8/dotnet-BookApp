@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace api.Interfaces
 {
-    interface ITokenService
+    public interface ITokenService
     {
         public string CreateToken(AppUsers user);
     }
