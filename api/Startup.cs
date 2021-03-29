@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using api.Data;
+using api.Helper;
 using api.Interfaces;
 using api.Middleware;
 using api.Services;
@@ -44,6 +45,8 @@ namespace api
                 };
             });
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddControllers();
             services.AddDbContext<DataContext>(options =>
             {

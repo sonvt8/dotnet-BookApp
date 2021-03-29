@@ -21,7 +21,8 @@
                         "Url": "..\\Images\\cover\\Actually.jpg",
                         "IsMain": true
                     }
-                ]
+                ],
+                "CategoryId" : 2
             }
         ]
     },
@@ -47,7 +48,8 @@
                         "Url": "..\\Images\\cover\\Field Notes.jpg",
                         "IsMain": true
                     }
-                ]
+                ],
+                "CategoryId": 3
             }
         ]
     },
@@ -73,7 +75,8 @@
                         "Url": "..\\Images\\cover\\Joe Biden.jpg",
                         "IsMain": true
                     }
-                ]
+                ],
+                "CategoryId": 3
             }
         ]
     },
@@ -99,7 +102,8 @@
                         "Url": "..\\Images\\cover\\Shuggie Bain.jpg",
                         "IsMain": true
                     }
-                ]
+                ],
+                "CategoryId": 1
             }
         ]
     }, 
@@ -125,7 +129,8 @@
                         "Url": "..\\Images\\cover\\Vesper Flights.jpg",
                         "IsMain": true
                     }
-                ]
+                ],
+                "CategoryId": 3
             }
         ]
     },
@@ -151,7 +156,8 @@
                         "Url": "..\\Images\\cover\\Earthlings.jpg",
                         "IsMain": true
                     }
-                ]
+                ],
+                "CategoryId": 1
             }
         ]
     }

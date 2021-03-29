@@ -15,6 +15,18 @@ namespace api.Data
     {
         public static async Task SeedUsers(DataContext context)
         {
+            // Seed Categories
+            if (await context.Categories.AnyAsync())
+                return;
+            var categoryData = await System.IO.File.ReadAllTextAsync("Data/CategorySeedData.json");
+            var categories = JsonSerializer.Deserialize<List<Category>>(categoryData);
+            foreach (var category in categories)
+            {
+                context.Categories.Add(category);
+            }
+            await context.SaveChangesAsync();
+
+            // Seed Users
             if (await context.Users.AnyAsync())
                 return;
             var userData = await System.IO.File.ReadAllTextAsync("Data/UserSeedData.json");
