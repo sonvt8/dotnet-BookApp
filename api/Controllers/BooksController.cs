@@ -51,5 +51,18 @@ namespace api.Controllers
 
             return BadRequest("Failed to update book");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteBook(int id)
+        {
+            var book = await _bookRepository.GetBookByIdAsync(id);
+            if (book == null) return BadRequest("Book does not exist!");
+
+            _bookRepository.DeleteBook(book);
+
+            if (await _bookRepository.SaveAllAsync()) return Ok("Book has been removed successfully");
+
+            return BadRequest("Failed to delete book");
+        }
     }
 }
