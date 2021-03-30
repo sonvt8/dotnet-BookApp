@@ -14,12 +14,13 @@ namespace api.Entities
         [Required]
         public string Title { get; set; }
         [Required]
+        public string Author { get; set; }
+        [Required]
         public int Price { get; set; }
         [Required]
         public int Quantity { get; set; }
+        [Required]
         public string Description { get; set; }
-        public AppUsers AppUsers { get; set; }
-        public int AppUsersId { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public ICollection<Photo> Photos { get; set; }

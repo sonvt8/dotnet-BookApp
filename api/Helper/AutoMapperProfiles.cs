@@ -8,10 +8,17 @@ namespace api.Helper
     {
         public AutoMapperProfiles()
         {
-            CreateMap<AppUsers, AuthorDto>();
+            CreateMap<AppUsers, MemberDto>();
+            CreateMap<MemberDto, AppUsers>();
+
             CreateMap<Book, BookDto>();
+            CreateMap<BookDto, Book>();
+
             CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryDto, Category>();
+
             CreateMap<Photo, PhotoDto>();
+            CreateMap<PhotoDto, Photo>();
         }
     }
 }

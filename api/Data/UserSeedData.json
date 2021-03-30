@@ -6,25 +6,8 @@
         "KnownAs": "Joan",
         "Created": "2019-01-02",
         "LastActive": "2020-05-03",
-        "Introduction": "Nulla velit veniam non officia laboris sunt nostrud aliqua aliquip mollit. Proident ea et culpa exercitation et. Tempor sit incididunt minim incididunt mollit est exercitation ex aute sit nulla cupidatat aute. In labore nisi elit in nisi velit pariatur sunt ut nulla aliquip cupidatat enim ut. Incididunt nisi pariatur incididunt incididunt. Minim sunt qui ut tempor.\r\n",
-        "Interests": "In consectetur occaecat aliquip laboris commodo dolor ex ex dolore labore labore voluptate culpa ut.",
         "City": "Lopezo",
-        "Country": "Qatar",
-        "Books": [
-            {
-                "Title": "Shit, Actually",
-                "Price": 10,
-                "Quantity": 35,
-                "Description": "This book is maybe the only good thing to come out of 2020. I was laughing so loud that my dog kept coming to check on me.",
-                "Photos": [
-                    {
-                        "Url": "..\\Images\\cover\\Actually.jpg",
-                        "IsMain": true
-                    }
-                ],
-                "CategoryId" : 2
-            }
-        ]
+        "Country": "Qatar"
     },
     {
         "UserName": "Tia",
@@ -33,25 +16,8 @@
         "KnownAs": "Tia",
         "Created": "2019-11-07",
         "LastActive": "2020-06-09",
-        "Introduction": "Laborum consequat aliqua mollit est qui eu. Aliquip quis non magna tempor adipisicing quis veniam proident sunt sit. Cupidatat adipisicing anim tempor esse pariatur.\r\n",
-        "Interests": "Officia dolore qui magna est laborum duis cupidatat ipsum voluptate consectetur amet aute occaecat.",
         "City": "Klondike",
-        "Country": "Sudan",
-        "Books": [
-            {
-                "Title": "Field Notes",
-                "Price": 8,
-                "Quantity": 14,
-                "Description": "When Julia Zarankin saw her first red-winged blackbird at the age of thirty-five, she didn&rsquo;t expect that it would change her life. Recently divorced and auditioning hobbies during a stressful career transition, she stumbled on birdwatching, initially out of curiosity for the strange breed of humans who wear multi-pocketed vests, carry spotting scopes and discuss the finer points of optics with disturbing fervour. What she never could have predicted was that she would become one of them. Not only would she come to identify proudly as a birder, but birding would ultimately lead her to find love, uncover a new language and lay down her roots.",
-                "Photos": [
-                    {
-                        "Url": "..\\Images\\cover\\Field Notes.jpg",
-                        "IsMain": true
-                    }
-                ],
-                "CategoryId": 3
-            }
-        ]
+        "Country": "Sudan"
     },
     {
         "UserName": "Darcy",
@@ -60,25 +26,8 @@
         "KnownAs": "Darcy",
         "Created": "2020-01-04",
         "LastActive": "2020-05-04",
-        "Introduction": "Dolore dolor ullamco cillum quis. Quis qui non consectetur et nulla nostrud Lorem Lorem aliqua dolore consectetur aute duis. Laboris consequat cupidatat ad laborum laborum duis proident sunt. Reprehenderit aute id dolor ad aliqua nostrud ut ipsum exercitation laborum. Sunt ad cillum excepteur cillum ipsum fugiat aliquip esse eiusmod eiusmod aliquip commodo et fugiat. Aliqua occaecat velit nisi exercitation nulla velit velit exercitation.\r\n",
-        "Interests": "Cupidatat enim commodo nisi officia voluptate aliqua fugiat.",
         "City": "Monument",
-        "Country": "Liberia",
-        "Books": [
-            {
-                "Title": "Joe Biden",
-                "Price": 9,
-                "Quantity": 17,
-                "Description": "Former vice president Joseph R.Biden Jr.has been called both the luckiest man and the unluckiest & mdash; fortunate to have sustained a fifty-year political career that reached the White House, but also marked by deep personal losses and disappointments that he has suffered.",
-                "Photos": [
-                    {
-                        "Url": "..\\Images\\cover\\Joe Biden.jpg",
-                        "IsMain": true
-                    }
-                ],
-                "CategoryId": 3
-            }
-        ]
+        "Country": "Liberia"
     },
     {
         "UserName": "Ida",
@@ -87,78 +36,7 @@
         "KnownAs": "Ida",
         "Created": "2020-03-23",
         "LastActive": "2020-06-09",
-        "Introduction": "Laborum exercitation id nostrud incididunt reprehenderit qui velit. Proident ipsum anim occaecat sit enim commodo qui cillum. Exercitation do aliquip ex est aute deserunt veniam pariatur anim aute ex id. Anim cupidatat eu ea ex id fugiat aute. Nisi proident aliquip excepteur cillum consectetur eiusmod eiusmod Lorem labore consectetur occaecat dolore aliqua. Sint voluptate velit enim consequat id quis sint sit nostrud nostrud anim.\r\n",
-        "Interests": "Occaecat pariatur eu amet consectetur pariatur pariatur et amet quis anim ad sint.",
         "City": "Malott",
-        "Country": "Sri Lanka",
-        "Books": [
-            {
-                "Title": "Shuggie Bain",
-                "Price": 9,
-                "Quantity": 17,
-                "Description": "The unforgettable story of young Hugh &ldquo; Shuggie & rdquo; Bain, a sweet and lonely boy who spends his 1980s childhood in run - down public housing in Glasgow, Scotland.Thatcher&rsquo;s policies have put husbands and sons out of work, and the city&rsquo;s notorious drugs epidemic is waiting in the wings.",
-                "Photos": [
-                    {
-                        "Url": "..\\Images\\cover\\Shuggie Bain.jpg",
-                        "IsMain": true
-                    }
-                ],
-                "CategoryId": 1
-            }
-        ]
-    }, 
-    {
-        "UserName": "Addie",
-        "Gender": "female",
-        "DateOfBirth": "1998-04-11",
-        "KnownAs": "Addie",
-        "Created": "2019-11-25",
-        "LastActive": "2020-06-17",
-        "Introduction": "Non aliqua eiusmod ea incididunt. Magna fugiat eiusmod do laboris proident deserunt aliquip irure reprehenderit do non quis occaecat. Mollit cupidatat laborum minim eu consequat ut ex est sit. Officia proident culpa ex dolore Lorem adipisicing do qui proident enim minim pariatur proident. Quis dolor elit incididunt tempor fugiat elit consectetur labore ea dolor labore id veniam.\r\n",
-        "Interests": "Irure eu et est labore ad ipsum culpa do.",
-        "City": "Shawmut",
-        "Country": "Estonia",
-        "Books": [
-            {
-                "Title": "Vesper Flights",
-                "Price": 6,
-                "Quantity": 16,
-                "Description": "Our world is a fascinating place, teeming not only with natural wonders that defy description, but complex interactions that create layers of meaning. Helen Macdonald is gifted with a special lens that seems to peer right through it all, and she shares her insights--at times startling, nostalgic, weighty, or simply entertaining--in this masterful collection of essays.",
-                "Photos": [
-                    {
-                        "Url": "..\\Images\\cover\\Vesper Flights.jpg",
-                        "IsMain": true
-                    }
-                ],
-                "CategoryId": 3
-            }
-        ]
-    },
-    {
-        "UserName": "Raymond",
-        "Gender": "male",
-        "DateOfBirth": "1993-12-03",
-        "KnownAs": "Raymond",
-        "Created": "2020-06-01",
-        "LastActive": "2020-06-13",
-        "Introduction": "Occaecat voluptate amet dolor nostrud nulla tempor et veniam sit Lorem dolore. Officia elit nulla dolor proident incididunt adipisicing voluptate ex aliquip quis anim laboris labore. Et excepteur id irure laborum sint officia ea laborum qui. Ullamco excepteur duis nulla sunt deserunt incididunt ipsum do laboris do voluptate nostrud. Cillum Lorem officia incididunt anim aliqua nisi occaecat do eiusmod.\r\n",
-        "Interests": "Dolore id veniam duis ipsum exercitation.",
-        "City": "Wadsworth",
-        "Country": "Bahrain",
-        "Books": [
-            {
-                "Title": "Earthlings",
-                "Price": 8,
-                "Quantity": 32,
-                "Description": "Each summer, Natsuki counts down the days until her family drives into the mountains of Nagano to visit her grandparents in their wooden house in the forest, a place that couldn&rsquo; t be more different from her grey commuter town.One summer, her cousin Yuu confides to Natsuki that he is an extraterrestrial and that every night he searches the sky for the spaceship that might take him.",
-                "Photos": [
-                    {
-                        "Url": "..\\Images\\cover\\Earthlings.jpg",
-                        "IsMain": true
-                    }
-                ],
-                "CategoryId": 1
-            }
-        ]
+        "Country": "Sri Lanka"
     }
 ]

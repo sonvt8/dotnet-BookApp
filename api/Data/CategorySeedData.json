@@ -1,11 +1,152 @@
 ﻿[
     {
-        "Name": "Fiction"
+        "Name": "Comic",
+        "Books": [
+            {
+                "Title": "Batman: Three Jokers",
+                "Author": "Geoff Johns",
+                "Price": 10,
+                "Quantity": 35,
+                "Description": "Batman doesn't understand how or why, but the fact is certain: the man he has spent a lifetime chasing isn't one man at all. There are three Jokers. Now that he knows the unbelievable truth, Bruce needs real answers. Joined by Barbara Gordon and Jason Todd, two former victims of the Joker's brutality, the Dark Knight is finally on a path to defeat the madman once and for all. Every last one of him.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617067874/Aptech/Three_Jokers_oxr5ji.jpg",
+                        "IsMain": true
+                    }
+                ]
+            },
+            {
+                "Title": "AVENGERS VS X-MEN",
+                "Author": "Jonathan Hickman,Brian Michael Bendis,Ed Brubaker,Jason Aaron,Matt Fraction",
+                "Price": 13,
+                "Quantity": 57,
+                "Description": "When the Phoenix Force approaches Earth, Hope Summers is assumed its next host. The X-Men and the Avengers are divided on how to handle the situation. The X-Men believe that the Phoenix Force will herald the rebirth of the Mutant Species, while the Avengers believe that it will bring an end all life on Earth. This leads to a war between Marvel's two powerful superhero factions.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617068254/Aptech/Avengers_vs_X-Men_lq4hhm.jpg",
+                        "IsMain": true
+                    }
+                ]
+            },
+            {
+                "Title": "Symbiote Spider-Man",
+                "Author": "Peter David",
+                "Price": 8,
+                "Quantity": 27,
+                "Description": "Clearly there's more to Spider-Man's new costume than anyone knows. And I am definitely going to find out what that is. Because it's a whole new ball game, Spider-Man. A whole new game.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617068617/Aptech/Spider-Man_p4qiqc.jpg",
+                        "IsMain": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "Name": "Film"
+        "Name": "Programming",
+        "Books": [
+            {
+                "Title": "Code Complete: A Practical Handbook of Software Construction",
+                "Author": "Steve McConnell",
+                "Price": 9,
+                "Quantity": 33,
+                "Description": "Widely considered one of the best practical guides to programming, Steve McConnell’s original code complete has been helping developers write better software for more than a decade. Now this classic book has been fully updated and revised with leading-edge practices—and hundreds of new code samples—illustrating the art and science of software construction.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617068901/Aptech/Code_complete_wdlekv.jpg",
+                        "IsMain": true
+                    }
+                ]
+            },
+            {
+                "Title": "Eloquent JavaScript",
+                "Author": "Marijn Haverbeke",
+                "Price": 8,
+                "Quantity": 15,
+                "Description": "This is a book about instructing computers. Computers are about as common as screwdrivers today, but they are quite a bit more complex, and making them do what you want them to do isn’t always easy.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617069234/Aptech/Javascript_mq4nfu.jpg",
+                        "IsMain": true
+                    }
+                ]
+            },
+            {
+                "Title": "Head First Python",
+                "Author": "Paul Barry",
+                "Price": 8,
+                "Quantity": 15,
+                "Description": "Want to learn the Python language without slogging your way through how-to manuals? With Head First Python, you’ll quickly grasp Python’s fundamentals, working with the built-in data structures and functions. Then you’ll move on to building your very own webapp, exploring database management, exception handling, and data wrangling. If you’re intrigued by what you can do with context managers, decorators, comprehensions, and generators, it’s all here. This second edition is a complete learning experience that will help you become a bonafide Python programmer in no time.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617069348/Aptech/Python_gcx18w.jpg",
+                        "IsMain": true
+                    }
+                ]
+            }
+        ]
     },
     {
-        "Name": "Memoir"
+        "Name": "Fantasy",
+        "Books": [
+            {
+                "Title": "Gardens of the Moon",
+                "Author": "Steven Erikson",
+                "Price": 11,
+                "Quantity": 32,
+                "Description": "The Malazan Empire simmers with discontent, bled dry by interminable warfare, bitter infighting and bloody confrontations with the formidable Anomander Rake and his Tiste Andii, ancient and implacable sorcerers. Even the imperial legions, long inured to the bloodshed, yearn for some respite. Yet Empress Laseen's rule remains absolute, enforced by her dread Claw assassins.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617069432/Aptech/Gardens_of_the_Moon_tnntwt.jpg",
+                        "IsMain": true
+                    }
+                ]
+            },
+            {
+                "Title": "The Dragonbone Chair",
+                "Author": "Tad Williams",
+                "Price": 7,
+                "Quantity": 7,
+                "Description": "A war fueled by the powers of dark sorcery is about to engulf the peaceful land of Osten Ard—for Prester John, the High King, lies dying. And with his death, the Storm King, the undead ruler of the elf-like Sithi, seizes the chance to regain his lost realm through a pact with the newly ascended king. Knowing the consequences of this bargain, the king’s younger brother joins with a small, scattered group of scholars, the League of the Scroll, to confront the true danger threatening Osten Ard.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617069586/Aptech/DragonBone_axjles.jpg",
+                        "IsMain": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Name": "Romance",
+        "Books": [
+            {
+                "Title": "Take a Hint, Dani Brown: A Novel (The Brown Sisters, 2)",
+                "Author": "Talia Hibbert",
+                "Price": 15,
+                "Quantity": 10,
+                "Description": "Danika Brown knows what she wants: professional success, academic renown, and an occasional roll in the hay to relieve all that career-driven tension. But romance? Been there, done that, burned the T-shirt. Romantic partners, whatever their gender, are a distraction at best and a drain at worst. So Dani asks the universe for the perfect friend-with-benefits—someone who knows the score and knows their way around the bedroom. ",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617069790/Aptech/Take_a_Hint_arvxg4.jpg",
+                        "IsMain": true
+                    }
+                ]
+            },
+            {
+                "Title": "Outlander",
+                "Author": "Diana Gabaldon",
+                "Price": 7,
+                "Quantity": 22,
+                "Description": "Unrivaled storytelling. Unforgettable characters. Rich historical detail. These are the hallmarks of Diana Gabaldon’s work. Her New York Times bestselling Outlander novels have earned the praise of critics and captured the hearts of millions of fans. Here is the story that started it all, introducing two remarkable characters, Claire Beauchamp Randall and Jamie Fraser, in a spellbinding novel of passion and history that combines exhilarating adventure with a love story for the ages.",
+                "Photos": [
+                    {
+                        "Url": "https://res.cloudinary.com/drzm8emhp/image/upload/v1617069936/Aptech/Outlander_j4iftc.jpg",
+                        "IsMain": true
+                    }
+                ]
+            }
+        ]
     }
 ]
