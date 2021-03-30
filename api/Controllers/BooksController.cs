@@ -35,5 +35,21 @@ namespace api.Controllers
 
             return Ok(_mapper.Map<IEnumerable<BookDto>>(books));
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<BookDto>> UpdateBook(int id, BookUpdateDto bookUpdateDto)
+        {
+            var book = await _bookRepository.GetBookByIdAsync(id);
+            if (book == null) return BadRequest("Book does not exist!");
+
+            _mapper.Map(bookUpdateDto, book);
+
+            _bookRepository.UpdateBook(book);
+
+            if (await _bookRepository.SaveAllAsync())
+                return Ok("Book has been updated successfully");
+
+            return BadRequest("Failed to update book");
+        }
     }
 }

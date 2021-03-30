@@ -16,8 +16,10 @@ namespace api.Helper
             CreateMap<MemberDto, AppUsers>();
 
             CreateMap<Book, BookDto>()
-                .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url));
+                .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url))
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
             CreateMap<BookDto, Book>();
+            CreateMap<BookUpdateDto, Book>();
 
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();

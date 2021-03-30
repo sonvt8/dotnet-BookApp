@@ -15,6 +15,12 @@ namespace api.Data
         {
             _context = context;
         }
+
+        public void AddBook(Book book)
+        {
+            _context.Books.Add(book);
+        }
+
         public void DeleteBook(Book book)
         {
             _context.Books.Remove(book);
@@ -22,12 +28,18 @@ namespace api.Data
 
         public async Task<Book> GetBookByIdAsync(int id)
         {
-            return await _context.Books.Include(p => p.Photos).SingleOrDefaultAsync(x => x.Id == id);
+            return await _context.Books
+                .Include(p => p.Photos)
+                .Include(b => b.Category)
+                .SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IEnumerable<Book>> GetBooksAsync()
         {
-            return await _context.Books.Include(p => p.Photos).ToListAsync();
+            return await _context.Books
+                .Include(p => p.Photos)
+                .Include(b => b.Category)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Book>> GetBooksByCategoryAsync(string catename)
