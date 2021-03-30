@@ -2,6 +2,7 @@
 using api.DTO;
 using api.Entities;
 using api.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,14 +15,26 @@ using System.Threading.Tasks;
 
 namespace api.Controllers
 {
-    public class AccountController : BaseApiController
+    public class AccountsController : BaseApiController
     {
         private readonly DataContext _context;
         private readonly ITokenService _tokenService;
-        public AccountController(DataContext context, ITokenService tokenService)
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+        public AccountsController(DataContext context, ITokenService tokenService, IUserRepository userRepository, IMapper mapper)
         {
             _context = context;
             _tokenService = tokenService;
+            _userRepository = userRepository;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        {
+            var users = await _userRepository.GetUsersAsync();
+
+            return Ok(_mapper.Map<IEnumerable<MemberDto>>(users));
         }
 
         [HttpPost("register")]
