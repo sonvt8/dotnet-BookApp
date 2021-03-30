@@ -33,6 +33,7 @@ namespace api.Data
         public async Task<IEnumerable<Book>> GetBooksByCategoryAsync(string catename)
         {
             return await _context.Books
+                .Include(p => p.Photos)
                 .Include(b => b.Category)
                 .Where(b => b.Category.Name == catename)
                 .ToListAsync();

@@ -27,5 +27,13 @@ namespace api.Controllers
 
             return Ok(_mapper.Map<IEnumerable<BookDto>>(books));
         }
+
+        [HttpGet("{category}")]
+        public async Task<ActionResult<IEnumerable<BookDto>>> GetBookByCategory(string category)
+        {
+            var books = await _bookRepository.GetBooksByCategoryAsync(category);
+
+            return Ok(_mapper.Map<IEnumerable<BookDto>>(books));
+        }
     }
 }
