@@ -23,6 +23,7 @@ namespace api.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookDto>>> GetBooks()
         {
@@ -31,6 +32,7 @@ namespace api.Controllers
             return Ok(_mapper.Map<IEnumerable<BookDto>>(books));
         }
 
+        [AllowAnonymous]
         [HttpGet("{category}")]
         public async Task<ActionResult<IEnumerable<BookDto>>> GetBookByCategory(string category)
         {
