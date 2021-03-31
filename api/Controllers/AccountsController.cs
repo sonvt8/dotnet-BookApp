@@ -75,6 +75,20 @@ namespace api.Controllers
             return BadRequest("Failed to update user");
         }
 
+        [Authorize]
+        public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _userManager.Users.SingleOrDefaultAsync(u => u.UserName == username);
+
+            _mapper.Map(memberUpdateDto, user);
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded) return Ok("User has been updated successfully");
+
+            return BadRequest("Failed to update user");
+        }
+
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
