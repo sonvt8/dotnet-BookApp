@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,11 @@ namespace api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
         {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentuser = await _userManager.Users.SingleOrDefaultAsync(u => u.UserName == username);
+            if (currentuser != null) return BadRequest("You can not delete yourself!");
+
+
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Id == id);
             if (user == null) return BadRequest("User does not exist!");
 
@@ -52,6 +58,21 @@ namespace api.Controllers
             if (result.Succeeded) return Ok("User has been removed successfully");
 
             return BadRequest("Failed to delete user");
+        }
+
+        [Authorize(Policy = "RequireAdminRole")]    
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateUser(int id, MemberUpdateDto memberUpdateDto)
+        {
+            var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Id == id);
+            if (user == null) return BadRequest("User does not exist!");
+
+            _mapper.Map(memberUpdateDto, user);
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded) return Ok("User has been updated successfully");
+
+            return BadRequest("Failed to update user");
         }
 
         [HttpPost("register")]

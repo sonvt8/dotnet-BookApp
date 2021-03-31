@@ -14,6 +14,7 @@ namespace api.Helper
         {
             CreateMap<AppUsers, MemberDto>();
             CreateMap<MemberDto, AppUsers>();
+            CreateMap<MemberUpdateDto, AppUsers>();
 
             CreateMap<Book, BookDto>()
                 .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url))
