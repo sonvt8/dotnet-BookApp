@@ -59,6 +59,11 @@ namespace api
                     ValidateAudience = false
                 };
             });
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                opt.AddPolicy("ModerateAdminRole", policy => policy.RequireRole("Admin", "Moderator"));
+            });
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository, BookRepository>();

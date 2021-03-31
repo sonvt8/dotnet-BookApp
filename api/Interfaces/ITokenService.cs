@@ -8,6 +8,6 @@ namespace api.Interfaces
 {
     public interface ITokenService
     {
-        public string CreateToken(AppUsers user);
+        Task<string> CreateToken(AppUsers user);
     }
 }

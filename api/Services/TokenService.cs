@@ -1,5 +1,6 @@
 ﻿using api.Entities;
 using api.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -15,17 +16,22 @@ namespace api.Services
     public class TokenService : ITokenService
     {
         private readonly SymmetricSecurityKey _key;
-        public TokenService(IConfiguration config)
+        private readonly UserManager<AppUsers> _usermanager;
+        public TokenService(IConfiguration config, UserManager<AppUsers> usermanager)
         {
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+            _usermanager = usermanager;
         }
 
-        public string CreateToken(AppUsers user)
+        public async Task<string> CreateToken(AppUsers user)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
             }; //Nhận diện Token bằng username
+
+            var roles = await _usermanager.GetRolesAsync(user);
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 

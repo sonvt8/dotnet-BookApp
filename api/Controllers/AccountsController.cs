@@ -3,6 +3,7 @@ using api.DTO;
 using api.Entities;
 using api.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,22 +21,21 @@ namespace api.Controllers
     {
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
-        private readonly UserRepository _userRepository;
         private readonly UserManager<AppUsers> _userManager;
         private readonly SignInManager<AppUsers> _signInManager;
-        public AccountsController(UserRepository userRepository,UserManager<AppUsers> userManager, SignInManager<AppUsers> signInManager, ITokenService tokenService, IMapper mapper)
+        public AccountsController(UserManager<AppUsers> userManager, SignInManager<AppUsers> signInManager, ITokenService tokenService, IMapper mapper)
         {
-            _userRepository = userRepository;
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _mapper = mapper;
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         {
-            var users = await _userRepository.GetUsersAsync();
+            var users = await _userManager.Users.ToListAsync();
 
             return Ok(_mapper.Map<IEnumerable<MemberDto>>(users));
         }
@@ -58,7 +58,7 @@ namespace api.Controllers
             return new UserDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = await _tokenService.CreateToken(user)
             };
         }
 
@@ -77,7 +77,7 @@ namespace api.Controllers
             return new UserDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = await _tokenService.CreateToken(user)
             };
         }
     }

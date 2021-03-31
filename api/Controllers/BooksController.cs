@@ -39,6 +39,7 @@ namespace api.Controllers
             return Ok(_mapper.Map<IEnumerable<BookDto>>(books));
         }
 
+        [Authorize(Policy = "ModerateAdminRole")]
         [HttpPut("{id}")]
         public async Task<ActionResult<BookDto>> UpdateBook(int id, BookCreateUpdateDto updateBookDto)
         {
@@ -55,6 +56,7 @@ namespace api.Controllers
             return BadRequest("Failed to update book");
         }
 
+        [Authorize(Policy = "ModerateAdminRole")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBook(int id)
         {
@@ -68,6 +70,7 @@ namespace api.Controllers
             return BadRequest("Failed to delete book");
         }
 
+        [Authorize(Policy = "ModerateAdminRole")]
         [HttpPost]
         public async Task<ActionResult<BookDto>> CreateBook(BookCreateUpdateDto createBookDto)
         {
