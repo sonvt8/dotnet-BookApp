@@ -40,6 +40,20 @@ namespace api.Controllers
             return Ok(_mapper.Map<IEnumerable<MemberDto>>(users));
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteUser(int id)
+        {
+            var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Id == id);
+            if (user == null) return BadRequest("User does not exist!");
+
+            var result =  await  _userManager.DeleteAsync(user);
+
+            if (result.Succeeded) return Ok("User has been removed successfully");
+
+            return BadRequest("Failed to delete user");
+        }
+
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
