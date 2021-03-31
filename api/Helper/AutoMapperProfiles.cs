@@ -20,7 +20,6 @@ namespace api.Helper
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
             CreateMap<BookDto, Book>();
             CreateMap<BookCreateUpdateDto, Book>();
-            CreateMap<Book, BookCreateUpdateDto>();
 
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();

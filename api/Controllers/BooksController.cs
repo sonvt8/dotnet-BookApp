@@ -2,6 +2,7 @@
 using api.Entities;
 using api.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace api.Controllers
 {
+    [Authorize]
     public class BooksController : BaseApiController
     {
         private readonly IBookRepository _bookRepository;
