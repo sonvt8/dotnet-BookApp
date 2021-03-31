@@ -1,4 +1,5 @@
 ﻿using api.DTO;
+using api.Entities;
 using api.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -37,12 +38,12 @@ namespace api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<BookDto>> UpdateBook(int id, BookUpdateDto bookUpdateDto)
+        public async Task<ActionResult<BookDto>> UpdateBook(int id, BookCreateUpdateDto updateBookDto)
         {
             var book = await _bookRepository.GetBookByIdAsync(id);
             if (book == null) return BadRequest("Book does not exist!");
 
-            _mapper.Map(bookUpdateDto, book);
+            _mapper.Map(updateBookDto, book);
 
             _bookRepository.UpdateBook(book);
 
@@ -63,6 +64,20 @@ namespace api.Controllers
             if (await _bookRepository.SaveAllAsync()) return Ok("Book has been removed successfully");
 
             return BadRequest("Failed to delete book");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<BookDto>> CreateBook(BookCreateUpdateDto createBookDto)
+        {
+            var book = new Book();
+
+            _mapper.Map(createBookDto, book);
+
+            _bookRepository.AddBook(book);
+
+            if (await _bookRepository.SaveAllAsync()) return Ok("Book has been created successfully");
+
+            return BadRequest("Failed to create a new Book");
         }
     }
 }

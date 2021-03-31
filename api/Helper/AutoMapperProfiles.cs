@@ -19,7 +19,8 @@ namespace api.Helper
                 .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url))
                 .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
             CreateMap<BookDto, Book>();
-            CreateMap<BookUpdateDto, Book>();
+            CreateMap<BookCreateUpdateDto, Book>();
+            CreateMap<Book, BookCreateUpdateDto>();
 
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();

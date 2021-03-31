@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.DTO
 {
-    public class BookUpdateDto
+    public class BookCreateUpdateDto
     {
         public string Title { get; set; }
         public string Author { get; set; }
