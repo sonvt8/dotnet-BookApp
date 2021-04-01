@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using api.Data;
 using api.Entities;
 using api.Helper;
+using api.Helpers;
 using api.Interfaces;
 using api.Middleware;
 using api.Services;
@@ -36,6 +37,7 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CloudinarySettings>(_config.GetSection("CloudinarySettings"));
             services.AddIdentityCore<AppUsers>(opt =>
                 {
                     opt.Password.RequireDigit = false;
@@ -67,6 +69,7 @@ namespace api
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IPhotoService, PhotoService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddControllers();
             services.AddDbContext<DataContext>(options =>

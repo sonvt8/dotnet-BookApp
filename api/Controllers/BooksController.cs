@@ -3,6 +3,7 @@ using api.Entities;
 using api.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace api.Controllers
     {
         private readonly IBookRepository _bookRepository;
         private readonly IMapper _mapper;
+        private readonly IPhotoService _photoService;
 
-        public BooksController(IBookRepository bookRepository, IMapper mapper)
+        public BooksController(IBookRepository bookRepository, IMapper mapper, IPhotoService photoService)
         {
             _bookRepository = bookRepository;
             _mapper = mapper;
+            _photoService = photoService;
         }
 
         [AllowAnonymous]
@@ -84,6 +87,41 @@ namespace api.Controllers
             if (await _bookRepository.SaveAllAsync()) return Ok("Book has been created successfully");
 
             return BadRequest("Failed to create a new Book");
+        }
+
+        [Authorize(Policy = "ModerateAdminRole")]
+        [HttpPost("add-photo/{bookId}")]
+        public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file, int bookId)
+        {
+            var book = await _bookRepository.GetBookByIdAsync(bookId);
+            if (book == null) return BadRequest("Book does not exist!");
+
+            var result = await _photoService.AddPhotoAsync(file);
+            if (result.Error != null)
+            {
+                Console.WriteLine("check");
+                return BadRequest(result.Error.Message);
+            }
+
+            var photo = new Photo
+            {
+                Url = result.SecureUrl.AbsoluteUri,
+                PublicId = result.PublicId
+            };
+
+            if (book.Photos.Count == 0)
+            {
+                photo.IsMain = true;
+            }
+
+            book.Photos.Add(photo);
+
+            if (await _bookRepository.SaveAllAsync())
+            {
+                return _mapper.Map<PhotoDto>(photo);
+            }
+
+            return BadRequest("Problem addding photo");
         }
     }
 }
