@@ -45,13 +45,13 @@ namespace api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(int id)
         {
-            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentuser = await _userManager.Users.SingleOrDefaultAsync(u => u.UserName == username);
-            if (currentuser != null) return BadRequest("You can not delete yourself!");
-
-
             var user = await _userManager.Users.SingleOrDefaultAsync(u => u.Id == id);
-            if (user == null) return BadRequest("User does not exist!");
+            if (user == null) return NotFound();
+
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.Users.SingleOrDefaultAsync(u => u.UserName == username);
+
+            if (currentUser == user) return BadRequest("You can not delete yourself!");
 
             var result =  await  _userManager.DeleteAsync(user);
 

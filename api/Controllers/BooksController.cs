@@ -48,7 +48,7 @@ namespace api.Controllers
         public async Task<ActionResult<BookDto>> UpdateBook(int id, BookCreateUpdateDto updateBookDto)
         {
             var book = await _bookRepository.GetBookByIdAsync(id);
-            if (book == null) return BadRequest("Book does not exist!");
+            if (book == null) return NotFound();
 
             _mapper.Map(updateBookDto, book);
 
@@ -65,12 +65,23 @@ namespace api.Controllers
         public async Task<ActionResult> DeleteBook(int id)
         {
             var book = await _bookRepository.GetBookByIdAsync(id);
-            if (book == null) return BadRequest("Book does not exist!");
+            if (book == null) return NotFound();
+
+            var photos = book.Photos.ToList();
+
+            foreach (var photo in photos)
+            {
+                if (photo.PublicId != null)
+                {
+                    var result = await _photoService.DeletePhotoAsync(photo.PublicId);
+                    if (result.Error != null) return BadRequest(result.Error.Message);
+                }
+                book.Photos.Remove(photo);
+            }
 
             _bookRepository.DeleteBook(book);
 
             if (await _bookRepository.SaveAllAsync()) return Ok("Book has been removed successfully");
-
             return BadRequest("Failed to delete book");
         }
 
@@ -94,7 +105,7 @@ namespace api.Controllers
         public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file, int bookId)
         {
             var book = await _bookRepository.GetBookByIdAsync(bookId);
-            if (book == null) return BadRequest("Book does not exist!");
+            if (book == null) return NotFound();
 
             var result = await _photoService.AddPhotoAsync(file);
             if (result.Error != null)
