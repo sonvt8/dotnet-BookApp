@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace api.Controllers
 {
-    [Authorize]
     public class BooksController : BaseApiController
     {
         private readonly IBookRepository _bookRepository;

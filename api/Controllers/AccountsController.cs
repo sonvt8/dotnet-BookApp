@@ -100,9 +100,11 @@ namespace api.Controllers
                 UserName = registerDto.Username.ToLower()
             };
 
-            var result = await _userManager.CreateAsync(user, registerDto.Password);
+            var Pass_result = await _userManager.CreateAsync(user, registerDto.Password);
+            if (!Pass_result.Succeeded) return BadRequest(Pass_result.Errors);
 
-            if (!result.Succeeded) return BadRequest(result.Errors);
+            var Role_result = await _userManager.AddToRoleAsync(user, "Member");
+            if (!Role_result.Succeeded) return BadRequest(Role_result.Errors);
 
             return new UserDto
             {
